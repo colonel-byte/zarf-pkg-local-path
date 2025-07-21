@@ -10,7 +10,7 @@ metadata:
     org.opencontainers.image.description: Zarf package for deploying local-path-provider
 x-artifacts:
   upstream:
-    - docker.io/library/busybox:v1.37.0
+    - docker.io/library/busybox:1.37.0
   registry1:
     - registry1.dso.mil/ironbank/frontiertechnology/cortex/busybox:v1.37.0
 components:
@@ -18,8 +18,8 @@ components:
     only:
       flavor: upstream
     images:
-      - docker.io/library/busybox:v1.37.0
-      - docker.io/rancher/local-path-provisioner:v0.0.30
+      - docker.io/library/busybox:1.37.0
+      - docker.io/rancher/local-path-provisioner:v0.0.31
   - name: local-path-manifests
     only:
       flavor: upstream
@@ -33,7 +33,7 @@ components:
       flavor: registry1
     images:
       - registry1.dso.mil/ironbank/frontiertechnology/cortex/busybox:v1.37.0
-      - registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner:v0.0.30
+      - registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner:v0.0.31
   - name: local-path-manifests
     only:
       flavor: registry1

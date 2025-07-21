@@ -9,7 +9,7 @@
       "repo": {
         "url": "https://github.com/rancher/local-path-provisioner",
         "renovate": "datasource=github-releases depName=rancher/local-path-provisioner",
-        "tag": "v0.0.30",
+        "tag": "v0.0.31",
         "path": "deploy",
         "release": false
       }
