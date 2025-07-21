@@ -1,0 +1,44 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/zarf-dev/zarf/main/zarf.schema.json
+kind: ZarfPackageConfig
+metadata:
+  name: local-path-provider
+  version: "###ZARF_PKG_TMPL_VERSION###"
+  source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
+  annotations:
+    org.opencontainers.image.source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
+    org.opencontainers.image.description: Zarf package for deploying local-path-provider
+x-artifacts:
+  upstream:
+    - docker.io/library/busybox:v1.37.0
+  registry1:
+    - registry1.dso.mil/ironbank/frontiertechnology/cortex/busybox:v1.37.0
+components:
+  - name: local-path-images
+    only:
+      flavor: upstream
+    images:
+      - docker.io/library/busybox:v1.37.0
+      - docker.io/rancher/local-path-provisioner:v0.0.30
+  - name: local-path-manifests
+    only:
+      flavor: upstream
+    manifests:
+      - name: local-path-provider
+        namespace: local-path-storage
+        kustomizations:
+          - upstream
+  - name: local-path-images
+    only:
+      flavor: registry1
+    images:
+      - registry1.dso.mil/ironbank/frontiertechnology/cortex/busybox:v1.37.0
+      - registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner:v0.0.30
+  - name: local-path-manifests
+    only:
+      flavor: registry1
+    manifests:
+      - name: local-path-provider
+        namespace: local-path-storage
+        kustomizations:
+          - registry1
