@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/colonel-byte/zarf-pkg-fluxcd/refs/heads/main/.github/hack/resources.schema.json",
+  "projects": [
+    {
+      "path": "manifests",
+      "file": {
+        "match": "local-path-storage.yaml"
+      },
+      "repo": {
+        "url": "https://github.com/rancher/local-path-provisioner",
+        "renovate": "datasource=github-releases depName=rancher/local-path-provisioner",
+        "tag": "v0.0.30",
+        "path": "deploy",
+        "release": false
+      }
+    }
+  ]
+}
