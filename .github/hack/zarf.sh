@@ -18,7 +18,9 @@ for flavor in "${FLAVOR[@]}"; do
   echo "::debug::yq_index='${yq_index}'"
   export yq_images=$(printf '(select(fi == 1) | .components[] | select(.name == "%s-chart") | .images | ... head_comment="") as $img' "$pkg")
   echo "::debug::yq_images='${yq_images}'"
+  export yq_charts=$(printf '(select(fi == 0) | .x-artifacts.chart) as $art')
+  echo "::debug::yq_charts='${yq_charts}'"
   export yq_update=$(printf '(select(fi == 0) | .components[%s].images = ($img + $art | sort))' "$yq_index")
   echo "::debug::yq_update='${yq_update}'"
-  yq ea -i "$yq_images | $yq_update" zarf.yaml .direnv/$flavor/out.yml
+  yq ea -i "$yq_images | $yq_charts | $yq_update" zarf.yaml .direnv/$flavor/out.yml
 done
