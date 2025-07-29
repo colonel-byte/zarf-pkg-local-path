@@ -10,6 +10,7 @@ metadata:
     org.opencontainers.image.description: Zarf package for deploying local-path-provider
 x-artifacts:
   chart:
+    # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
     - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.31
 components:
   - name: local-path-images

@@ -51,27 +51,13 @@
     {
       "customType": "regex",
       "description": [
-        "Regex for resource.json hack"
-      ],
-      "managerFilePatterns": [
-        "/(^|/).github/hack/resources\\.json/"
-      ],
-      "matchStrings": [
-        "\"renovate\": \"datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( repository=(?<registryUrl>\\S+))?\",\\n.+?: ?.*\"(?<currentValue>\\S+?)\""
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
-    },
-    {
-      "customType": "regex",
-      "description": [
         "Process custom dependencies"
       ],
       "managerFilePatterns": [
         "/(^|/).+\\.ya?ml(\\.j2)?$/"
       ],
       "matchStrings": [
-        "(?m:# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: versioning=(?<versioning>[a-z-0-9]+?))?( repository=(?<registryUrl>\\S+))?\\n.+?: ?\"?.*(?<currentValue>\\S+?)\"?$)",
-        "(?m:# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: versioning=(?<versioning>[a-z-0-9]+?))?\\n.+?/(?<currentValue>(v|\\d)[^/]+)\\S+$)"
+        "(?m:# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: versioning=(?<versioning>[a-z-0-9]+?))?\n.+: ?(?<currentValue>v?(:?\\d+\\.?)+)$)"
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
