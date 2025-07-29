@@ -7,9 +7,7 @@
   "assignees": [
     "@A1994SC"
   ],
-  "github-actions": {
-    "enabled": false
-  },
+  "platformAutomerge": true,
   "packageRules": [
     {
       "matchPackageNames": [
@@ -17,6 +15,35 @@
         "docker.io/rancher/local-path-provisioner"
       ],
       "enabled": false
+    },
+    {
+      "matchDatasources": [
+        "regex",
+        "docker",
+        "git-tags",
+        "github-releases"
+      ],
+      "addLabels": [
+        "renovate/oci"
+      ],
+      "groupName": "all dependencies",
+      "groupSlug": "all-dep",
+      "matchPackageNames": [
+        "*"
+      ],
+      "automerge": true
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "addLabels": [
+        "renovate/action"
+      ],
+      "groupName": "all-actions",
+      "groupSlug": "all-actions",
+      "matchPackageNames": [
+        "*"
+      ],
+      "automerge": true
     }
   ],
   "dependencyDashboard": true,
