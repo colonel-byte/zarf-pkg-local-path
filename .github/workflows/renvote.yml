@@ -29,7 +29,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         if: ${{ !startsWith(github.ref, 'refs/heads/renovate/') }}
         run: |-
-          ./.github/hack/update.sh
           ./.github/hack/zarf.sh
 
       - name: Commit & Push changes

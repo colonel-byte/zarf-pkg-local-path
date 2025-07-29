@@ -8,11 +8,6 @@ metadata:
   annotations:
     org.opencontainers.image.source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
     org.opencontainers.image.description: Zarf package for deploying local-path-provider
-x-artifacts:
-  upstream:
-    - docker.io/library/busybox:1.37.0
-  registry1:
-    - registry1.dso.mil/ironbank/frontiertechnology/cortex/busybox:v1.37.0
 components:
   - name: local-path-images
     only:
@@ -20,25 +15,29 @@ components:
     images:
       - docker.io/library/busybox:1.37.0
       - docker.io/rancher/local-path-provisioner:v0.0.31
-  - name: local-path-manifests
+  - name: local-path-chart
     only:
       flavor: upstream
-    manifests:
+    import:
+      path: common
+      name: local-path-provider-chart
+    charts:
       - name: local-path-provider
-        namespace: local-path-storage
-        kustomizations:
-          - upstream
+        valuesFiles:
+          - values/image-upstream.yml
   - name: local-path-images
     only:
       flavor: registry1
     images:
       - registry1.dso.mil/ironbank/frontiertechnology/cortex/busybox:v1.37.0
       - registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner:v0.0.31
-  - name: local-path-manifests
+  - name: local-path-chart
     only:
       flavor: registry1
-    manifests:
+    import:
+      path: common
+      name: local-path-provider-chart
+    charts:
       - name: local-path-provider
-        namespace: local-path-storage
-        kustomizations:
-          - registry1
+        valuesFiles:
+          - values/image-registry1.yml

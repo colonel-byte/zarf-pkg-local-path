@@ -1,0 +1,95 @@
+replicaCount: 1
+commonLabels: {}
+namespaceOverride: ""
+
+imagePullSecrets:
+  - name: private-registry
+nameOverride: ""
+fullnameOverride: ""
+
+storageClass:
+  create: true
+  provisionerName: rancher.io/local-path
+  defaultClass: false
+  defaultVolumeType: hostPath
+  name: local-path
+  reclaimPolicy: Delete
+  volumeBindingMode: WaitForFirstConsumer
+  pathPattern: "{{ .PVC.Namespace }}-{{ .PVC.Name }}"
+
+nodePathMap:
+  - node: DEFAULT_PATH_FOR_NON_LISTED_NODES
+    paths:
+      - /var/lib/local-path-provisioner
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # runAsNonRoot: true
+
+securityContext: {}
+  # allowPrivilegeEscalation: false
+  # seccompProfile:
+  #   type: RuntimeDefault
+  # capabilities:
+  #   drop: ["ALL"]
+  # runAsUser: 65534
+  # runAsGroup: 65534
+  # readOnlyRootFilesystem: true
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+helperPod:
+  resources: {}
+    # limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    # requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+rbac:
+  create: true
+
+serviceAccount:
+  create: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+podDisruptionBudget:
+  enabled: false
+
+configmap:
+  # specify the config map name
+  name: local-path-config
+  # specify the custom script for setup and teardown
+  setup: |-
+    #!/bin/sh
+    set -eu
+    mkdir -m 0777 -p "$VOL_DIR"
+  teardown: |-
+    #!/bin/sh
+    set -eu
+    rm -rf "$VOL_DIR"
+  helperPod:
+    # Allows to run the helper pod in another namespace. Uses release namespace by default.
+    namespaceOverride: ""
+    name: "helper-pod"
+    annotations: {}
+    tolerations: []
+
+extraArgs: []
