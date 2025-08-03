@@ -11,6 +11,6 @@ components:
         releaseName: local-path-provider
         url: oci://ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
         # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
-        version: 0.0.31
+        version: 0.0.32
         valuesFiles:
           - ../values/base.yml
