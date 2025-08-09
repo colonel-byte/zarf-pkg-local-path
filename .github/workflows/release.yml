@@ -70,6 +70,6 @@ jobs:
           COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
 
       - name: Publish Zarf package, skeleton
-        if: ${{ matrix.types == 'skeleton' }}
+        if: ${{ matrix.arch == 'skeleton' }}
         run: |-
           zarf package publish --signing-key env://COSIGN_KEY --signing-key-pass ${{ secrets.COSIGN_PASS }} .          oci://ghcr.io/${{ github.repository_owner }}/zarf
