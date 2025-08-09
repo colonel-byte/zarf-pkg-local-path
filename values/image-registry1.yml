@@ -1,6 +1,9 @@
 image:
+  # renovate: datasource=docker
   repository: registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner
+  tag: v0.0.31
 
 helperImage:
+  # renovate: datasource=docker
   repository: registry1.dso.mil/ironbank/frontiertechnology/cortex/busybox
   tag: v1.37.0

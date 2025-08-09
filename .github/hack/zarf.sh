@@ -22,5 +22,7 @@ for flavor in "${FLAVOR[@]}"; do
   echo "::debug::yq_charts='${yq_charts}'"
   export yq_update=$(printf '(select(fi == 0) | .components[%s].images = ($img + $art | sort))' "$yq_index")
   echo "::debug::yq_update='${yq_update}'"
-  yq ea -i "$yq_images | $yq_charts | $yq_update" zarf.yaml .direnv/$flavor/out.yml
+  export yq_comments=$(printf '(select(fi == 0) | .components[%s].images[] head_comment="")' "$yq_index")
+  echo "::debug::yq_comments='${yq_comments}'"
+  yq ea -i "$yq_images | $yq_charts | $yq_update | $yq_comments" zarf.yaml .direnv/$flavor/out.yml
 done

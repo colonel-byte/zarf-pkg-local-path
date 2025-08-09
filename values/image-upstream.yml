@@ -1,6 +1,9 @@
 image:
+  # renovate: datasource=docker
   repository: docker.io/rancher/local-path-provisioner
+  tag: v0.0.32
 
 helperImage:
+  # renovate: datasource=docker
   repository: docker.io/library/busybox
   tag: 1.37.0

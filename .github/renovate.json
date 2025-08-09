@@ -57,7 +57,8 @@
         "/(^|/).+\\.ya?ml(\\.j2)?$/"
       ],
       "matchStrings": [
-        "(?m:# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: versioning=(?<versioning>[a-z-0-9]+?))?\n.+: ?(?<currentValue>v?(:?\\d+\\.?)+)$)"
+        "(?m:# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: versioning=(?<versioning>[a-z-0-9]+?))?\n.+: ?(?<currentValue>v?(:?\\d+\\.?)+)$)",
+        "(?m:# renovate: datasource=(?<datasource>\\S+)(?: versioning=(?<versioning>[a-z-0-9]+?))?\n +repository: (?<depName>\\S+)\n +tag: (?<currentValue>v?(?:\\d+\\.?)+)$)"
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
