@@ -72,6 +72,7 @@ jobs:
       - name: Publish Zarf package, skeleton
         if: ${{ matrix.arch == 'skeleton' }}
         run: |-
+          sed -i 's!###ZARF_PKG_TMPL_VERSION###!${{ steps.describe.outputs.git_describe }}!g' zarf.yaml
           zarf package publish --signing-key env://COSIGN_KEY --signing-key-pass ${{ secrets.COSIGN_PASS }} --flavor ${{ matrix.type }} . oci://ghcr.io/${{ github.repository_owner }}/zarf
         env:
           COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
