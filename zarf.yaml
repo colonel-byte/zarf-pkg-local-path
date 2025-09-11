@@ -35,7 +35,6 @@ components:
       flavor: registry1
     images:
       - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.32
-      - registry1.dso.mil/ironbank/frontiertechnology/cortex/busybox:v1.37.0
       - registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner:v0.0.31
   - name: local-path-chart
     only:
