@@ -19,7 +19,7 @@ components:
     images:
       - docker.io/library/busybox:1.37.0
       - docker.io/rancher/local-path-provisioner:v0.0.32
-      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.32
+      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.34
   - name: local-path-chart
     only:
       flavor: upstream
@@ -34,7 +34,7 @@ components:
     only:
       flavor: registry1
     images:
-      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.32
+      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.34
       - registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner:v0.0.31
   - name: local-path-chart
     only:
