@@ -22,7 +22,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Setup gitsign
-        uses: chainguard-dev/actions/setup-gitsign@3e8a2a226fad9e1ecbf2d359b8a7697554a4ac6d # v1.5.10
+        uses: chainguard-dev/actions/setup-gitsign@7d647f470c4d3692286221bd17ca78206976a61c # v1.5.11
 
       - name: Install nix
         uses: DeterminateSystems/nix-installer-action@c5a866b6ab867e88becbed4467b93592bce69f8a # v21
