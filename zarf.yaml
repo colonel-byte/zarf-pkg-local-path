@@ -11,7 +11,7 @@ metadata:
 x-artifacts:
   chart:
     # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
-    - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.32
+    - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.34
 components:
   - name: local-path-images
     only:
