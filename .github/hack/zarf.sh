@@ -3,7 +3,7 @@
 set -u
 set -o pipefail
 
-declare -a FLAVOR=("upstream" "registry1")
+declare -a FLAVOR=("upstream")
 
 export pkg="local-path"
 

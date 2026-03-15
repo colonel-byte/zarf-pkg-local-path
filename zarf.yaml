@@ -30,19 +30,3 @@ components:
       - name: local-path-provider
         valuesFiles:
           - values/image-upstream.yml
-  - name: local-path-images
-    only:
-      flavor: registry1
-    images:
-      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.32
-      - registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner:v0.0.31
-  - name: local-path-chart
-    only:
-      flavor: registry1
-    import:
-      path: common
-      name: local-path-provider-chart
-    charts:
-      - name: local-path-provider
-        valuesFiles:
-          - values/image-registry1.yml

@@ -24,7 +24,7 @@ jobs:
       git-tag: ${{ steps.describe.outputs.git_describe }}
     steps:
       - name: Sleep for 30 seconds to avoid race condition with arm/amd
-        if: ${{ matrix.types == 'arm64' }}
+        if: ${{ matrix.arch == 'arm64' }}
         run: sleep 30s
 
       - name: Checkout
@@ -77,7 +77,7 @@ jobs:
       git-tag: ${{ steps.describe.outputs.git_describe }}
     steps:
       - name: Sleep for 30 seconds to avoid race condition with arm/amd
-        if: ${{ matrix.types == 'arm64' }}
+        if: ${{ matrix.arch == 'arm64' }}
         run: sleep 30s
 
       - name: Checkout
@@ -101,7 +101,6 @@ jobs:
 
       - name: Login to Registry1
         uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4.0.0
-        if: ${{ matrix.type == 'registry1' }}
         with:
           registry: registry1.dso.mil
           username: ${{ secrets.REG_ONE_USER }}

@@ -18,7 +18,7 @@ jobs:
       matrix:
         type:
           - upstream
-          - registry1
+          # - registry1
     steps:
       - name: Delete old tags
         uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1.0.16
