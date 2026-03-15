@@ -11,15 +11,15 @@ metadata:
 x-artifacts:
   chart:
     # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
-    - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.32
+    - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.33
 components:
   - name: local-path-images
     only:
       flavor: upstream
     images:
       - docker.io/library/busybox:1.37.0
-      - docker.io/rancher/local-path-provisioner:v0.0.32
-      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.32
+      - docker.io/rancher/local-path-provisioner:v0.0.33
+      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.33
   - name: local-path-chart
     only:
       flavor: upstream
