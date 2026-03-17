@@ -1,7 +1,5 @@
 image:
-  # renovate: datasource=docker
   repository: docker.io/rancher/local-path-provisioner
-  tag: v0.0.32
 
 helperImage:
   # renovate: datasource=docker

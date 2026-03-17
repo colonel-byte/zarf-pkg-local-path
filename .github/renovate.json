@@ -10,13 +10,6 @@
   "platformAutomerge": true,
   "packageRules": [
     {
-      "matchPackageNames": [
-        "registry1.dso.mil/ironbank/frontiertechnology/cortex/local-path-provisioner",
-        "docker.io/rancher/local-path-provisioner"
-      ],
-      "enabled": false
-    },
-    {
       "matchDatasources": [
         "regex",
         "docker",
