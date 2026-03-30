@@ -25,7 +25,7 @@ jobs:
         uses: chainguard-dev/actions/setup-gitsign@c29bd2a0f4e71ad61a209c255c0164987df76aaa # v1.6.10
 
       - name: Install nix
-        uses: DeterminateSystems/nix-installer-action@c5a866b6ab867e88becbed4467b93592bce69f8a # v21
+        uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25 # v22
 
       - name: Update flake
         run: |
