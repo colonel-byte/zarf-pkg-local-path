@@ -3,7 +3,8 @@
 kind: ZarfPackageConfig
 metadata:
   name: local-path-provider
-  version: "###ZARF_PKG_TMPL_VERSION###"
+  # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
+  version: 0.0.36
   source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
   annotations:
     org.opencontainers.image.source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
@@ -11,15 +12,32 @@ metadata:
 x-artifacts:
   chart:
     # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
-    - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.35
+    - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.36
 components:
+  - name: local-path-images
+    only:
+      flavor: minimus
+    images:
+      - reg.mini.dev/busybox:1.37.0
+      - reg.mini.dev/local-path-provisioner:0.0.36
+      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.36
+  - name: local-path-chart
+    only:
+      flavor: minimus
+    import:
+      path: common
+      name: local-path-provider-chart
+    charts:
+      - name: local-path-provider
+        valuesFiles:
+          - values/image-minimus.yml
   - name: local-path-images
     only:
       flavor: upstream
     images:
       - docker.io/library/busybox:1.37.0
-      - docker.io/rancher/local-path-provisioner:v0.0.35
-      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.35
+      - docker.io/rancher/local-path-provisioner:v0.0.36
+      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.36
   - name: local-path-chart
     only:
       flavor: upstream

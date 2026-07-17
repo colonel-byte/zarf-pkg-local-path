@@ -1,0 +1,7 @@
+image:
+  repository: reg.mini.dev/local-path-provisioner
+
+helperImage:
+  # renovate: datasource=docker
+  repository: reg.mini.dev/busybox
+  tag: 1.37.0
