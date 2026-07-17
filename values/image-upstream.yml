@@ -4,4 +4,4 @@ image:
 helperImage:
   # renovate: datasource=docker
   repository: docker.io/library/busybox
-  tag: 1.37.0
+  tag: 1.38.0
