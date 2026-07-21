@@ -2,7 +2,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/zarf-dev/zarf/main/zarf.schema.json
 kind: ZarfPackageConfig
 metadata:
-  name: local-path-provider
+  name: csi-local-path-provider
   # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
   version: v0.0.36
   source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
